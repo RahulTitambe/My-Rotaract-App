@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="5dp">
+
+    <TextView
+        android:id="@+id/txtPostTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:text="This is title"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="15sp"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/light_grey"
+        android:paddingTop="10dp"/>
+
+    <ImageView
+        android:id="@+id/imgPostImage"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:src="@mipmap/app_logo"/>
+    <TextView
+        android:id="@+id/txtPostDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/grey"
+        android:textSize="10sp"
+        android:paddingTop="8dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:text="25 Mar 2022"
+        android:paddingBottom="5dp"/>
+
+
+    <TextView
+        android:id="@+id/txtPostDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingRight="15dp"
+        android:paddingLeft="15dp"
+        android:textSize="12sp"
+        android:textColor="@color/black"
+        android:text="This is sample text for
+        the description for the descrition box
+        of the post description"/>
+
+</LinearLayout>
