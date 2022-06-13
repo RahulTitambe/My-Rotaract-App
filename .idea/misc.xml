@@ -3,11 +3,26 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable-anydpi/ic_add_rounded.xml" value="0.1045" />
+        <entry key="app/src/main/res/drawable-anydpi/ic_image_view.xml" value="0.1045" />
+        <entry key="app/src/main/res/drawable/container_border.xml" value="0.1045" />
         <entry key="app/src/main/res/drawable/edittext_bg.xml" value="0.121" />
+        <entry key="app/src/main/res/drawable/rounded_button.xml" value="0.1045" />
+        <entry key="app/src/main/res/drawable/rounded_button_blue.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/rounded_buttonblue.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/rounded_edittext.xml" value="0.1045" />
+        <entry key="app/src/main/res/layout-w1240dp/activity_login.xml" value="0.12449799196787148" />
+        <entry key="app/src/main/res/layout-w936dp/activity_login.xml" value="0.10997267759562841" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.14583333333333334" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/activity_splash.xml" value="0.14583333333333334" />
         <entry key="app/src/main/res/layout/create_new_post.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/forget_password.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/login_activity.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/login_fragment.xml" value="0.14583333333333334" />
         <entry key="app/src/main/res/layout/post_view.xml" value="0.22" />
         <entry key="app/src/main/res/layout/posts_fragment.xml" value="0.14583333333333334" />
+        <entry key="app/src/main/res/layout/splash_activity.xml" value="0.14583333333333334" />
       </map>
     </option>
   </component>

@@ -4,70 +4,324 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingTop="25dp"
     android:gravity="center_horizontal"
     android:background="@color/white">
 
-    <ImageView
-        android:id="@+id/imgPostImagePicker"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:src="@drawable/ic_image_view"
-        android:layout_margin="10dp"/>
+        android:layout_height="match_parent"
+        android:background="@color/white">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Title:"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:textColor="@color/grey"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="25dp"
+            android:background="@color/white">
 
-    <EditText
-        android:id="@+id/edtTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:textSize="20sp"
-        android:textColor="@color/black"
-        android:background="@drawable/edittext_bg"
-        android:hint="Title"
-        android:textColorHint="@color/light_grey"
-        android:padding="10dp"
-        android:layout_marginBottom="10dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select Image:"
+                android:textColor="@color/light_grey"
+                android:textSize="12sp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Description:"
-        android:textColor="@color/grey"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/faint_grey"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"/>
 
-    <EditText
-        android:id="@+id/edtDescription"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:textSize="20sp"
-        android:textColor="@color/black"
-        android:background="@drawable/edittext_bg"
-        android:hint="Description"
-        android:textColorHint="@color/light_grey"
-        android:padding="10dp"
-        android:layout_marginBottom="10dp"/>
+            <ImageView
+                android:id="@+id/imgPostImagePicker"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:src="@drawable/ic_image_view"
+                android:scaleType="centerCrop" />
 
-    <Button
-        android:id="@+id/btnSavePost"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Save"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        android:layout_margin="10dp"
-        android:textSize="17sp"
-        android:padding="5dp"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/faint_grey"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Title:"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:textSize="12sp"
+                android:textColor="@color/grey"/>
+
+            <EditText
+                android:id="@+id/edtTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:background="@drawable/edittext_bg"
+                android:hint="Title"
+                android:textColorHint="@color/light_grey"
+                android:padding="10dp"
+                android:layout_marginBottom="10dp"
+                android:inputType="textCapWords"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Description:"
+                android:textColor="@color/grey"
+                android:textSize="12sp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp" />
+
+            <EditText
+                android:id="@+id/edtDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:textSize="12sp"
+                android:textColor="@color/black"
+                android:background="@drawable/edittext_bg"
+                android:hint="Description"
+                android:textColorHint="@color/light_grey"
+                android:padding="10dp"
+                android:layout_marginBottom="10dp"
+                android:inputType="textCapSentences|textMultiLine"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Projectc Chairman:"
+                android:textColor="@color/grey"
+                android:textSize="12sp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"/>
+
+            <EditText
+                android:id="@+id/edtProjectChairman"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:background="@drawable/edittext_bg"
+                android:hint="Project Chairman"
+                android:textColorHint="@color/light_grey"
+                android:padding="10dp"
+                android:layout_marginBottom="10dp"
+                android:inputType="textCapWords"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Project Avenue:"
+                android:textColor="@color/grey"
+                android:textSize="12sp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"/>
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="20dp"
+                android:paddingLeft="20dp">
+
+                <RadioButton
+                    android:id="@+id/radioProfessional"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Professional Service Avenue"
+                    android:textColor="@color/black"
+                    android:buttonTint="@color/primary_pink"/>
+
+                <RadioButton
+                    android:id="@+id/radioCommunity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Community Service Avenue"
+                    android:textColor="@color/black"
+                    android:buttonTint="@color/primary_pink"/>
+
+                <RadioButton
+                    android:id="@+id/radioInternational"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="International Service Avenue"
+                    android:textColor="@color/black"
+                    android:buttonTint="@color/primary_pink"/>
+
+                <RadioButton
+                    android:id="@+id/radioClub"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Club Service Avenue"
+                    android:textColor="@color/black"
+                    android:buttonTint="@color/primary_pink"/>
+
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Project Date:"
+                android:textColor="@color/grey"
+                android:textSize="12sp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"/>
+
+            <Button
+                android:id="@+id/btnPickDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/blue"
+                android:text="Pick the date"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_margin="10dp"
+                android:textSize="16sp"
+                android:padding="10dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Project Time:"
+                android:textColor="@color/grey"
+                android:textSize="12sp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"/>
+
+            <Button
+                android:id="@+id/btnPickTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/blue"
+                android:text="Pick the Time"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_margin="10dp"
+                android:textSize="16sp"
+                android:padding="10dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Participated Rotaracters Count:"
+                android:textColor="@color/grey"
+                android:textSize="12sp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"/>
+
+            <EditText
+                android:id="@+id/edtParticipatedRotaractersCount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:background="@drawable/edittext_bg"
+                android:hint="Participated Rotaracters Count"
+                android:textColorHint="@color/light_grey"
+                android:padding="10dp"
+                android:layout_marginBottom="10dp"
+                android:inputType="number"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Participated Roterians Count:"
+                android:textColor="@color/grey"
+                android:textSize="12sp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"/>
+
+            <EditText
+                android:id="@+id/edtParticipatedRoteriansCount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:background="@drawable/edittext_bg"
+                android:hint="Participated Roterians Count"
+                android:textColorHint="@color/light_grey"
+                android:padding="10dp"
+                android:layout_marginBottom="10dp"
+                android:inputType="number"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Participated Non Members Count:"
+                android:textColor="@color/grey"
+                android:textSize="12sp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"/>
+
+            <EditText
+                android:id="@+id/edtParticipatedNonMembersCount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:background="@drawable/edittext_bg"
+                android:hint="Participated Rotaracters Count"
+                android:textColorHint="@color/light_grey"
+                android:padding="10dp"
+                android:layout_marginBottom="10dp"
+                android:inputType="number"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Venue:"
+                android:textColor="@color/grey"
+                android:textSize="12sp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"/>
+
+            <EditText
+                android:id="@+id/edtVenue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:background="@drawable/edittext_bg"
+                android:hint="Venue"
+                android:textColorHint="@color/light_grey"
+                android:padding="10dp"
+                android:layout_marginBottom="10dp"
+                android:inputType="textCapWords"/>
+
+            <Button
+                android:id="@+id/btnSavePost"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Save"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_margin="10dp"
+                android:textSize="17sp"
+                android:padding="5dp"
+                android:background="@drawable/rounded_button"/>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>
