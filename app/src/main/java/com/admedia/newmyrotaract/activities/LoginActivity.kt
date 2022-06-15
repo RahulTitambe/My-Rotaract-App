@@ -7,7 +7,7 @@ import com.admedia.newmyrotaract.fragments.LoginFragment
 
 class LoginActivity : AppCompatActivity() {
 
-    var LoginFragment = com.admedia.newmyrotaract.fragments.LoginFragment()
+    private var LoginFragment = LoginFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

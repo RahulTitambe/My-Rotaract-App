@@ -1,34 +1,27 @@
 package com.admedia.newmyrotaract.fragments
 
-import android.content.Context
-import android.content.Context.*
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
-import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
-import androidx.core.content.ContextCompat.getSystemService
-import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import com.admedia.newmyrotaract.R
 import com.admedia.newmyrotaract.databinding.ForgetPasswordBinding
-import kotlin.math.log
 
 class ForgetPasswordFragment : Fragment() {
 
-    lateinit var forgetPasswordBinding : ForgetPasswordBinding
+    private lateinit var forgetPasswordBinding : ForgetPasswordBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         forgetPasswordBinding = ForgetPasswordBinding.inflate(layoutInflater)
 
-        forgetPasswordBinding.containerEnterOTP.setVisibility(View.GONE)
+        forgetPasswordBinding.containerEnterOTP.visibility = View.GONE
 
         forgetPasswordBinding.btnFrgtPassValidateOTP.isClickable = false
 
@@ -64,12 +57,12 @@ class ForgetPasswordFragment : Fragment() {
 
                 if(forgetPasswordBinding.edtFrgtPassEmail.text.toString().contains("@")) {
 
-                    forgetPasswordBinding.containerGenerateOTP.setVisibility(View.GONE)
+                    forgetPasswordBinding.containerGenerateOTP.visibility = View.GONE
 
                     forgetPasswordBinding.txtEnteredEmail.text =
                         forgetPasswordBinding.edtFrgtPassEmail.text.toString()
 
-                    forgetPasswordBinding.containerEnterOTP.setVisibility(View.VISIBLE)
+                    forgetPasswordBinding.containerEnterOTP.visibility = View.VISIBLE
 
                     hideKeyboard()
                 }
@@ -85,9 +78,9 @@ class ForgetPasswordFragment : Fragment() {
         //hiding the current container and enabling the container of entering email
         forgetPasswordBinding.txtEditEmail.setOnClickListener {
 
-            forgetPasswordBinding.containerEnterOTP.setVisibility(View.GONE)
+            forgetPasswordBinding.containerEnterOTP.visibility = View.GONE
 
-            forgetPasswordBinding.containerGenerateOTP.setVisibility(View.VISIBLE)
+            forgetPasswordBinding.containerGenerateOTP.visibility = View.VISIBLE
         }
     }
 

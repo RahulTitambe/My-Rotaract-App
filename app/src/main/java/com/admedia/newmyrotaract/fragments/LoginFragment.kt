@@ -6,21 +6,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
 import com.admedia.newmyrotaract.R
 import com.admedia.newmyrotaract.activities.MainActivity
 import com.admedia.newmyrotaract.databinding.LoginFragmentBinding
-import com.admedia.newmyrotaract.databinding.PostsFragmentBinding
 
 class LoginFragment : Fragment() {
 
-    lateinit var loginBinding : LoginFragmentBinding
+    private lateinit var loginBinding : LoginFragmentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         loginBinding = LoginFragmentBinding.inflate(layoutInflater)
 

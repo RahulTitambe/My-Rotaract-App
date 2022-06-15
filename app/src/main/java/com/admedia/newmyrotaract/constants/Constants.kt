@@ -2,7 +2,7 @@ package com.admedia.newmyrotaract.constants
 
 class Constants {
     companion object {
-        val NewPostKey = "NEW_POST"
-        val CreateNewPostKey = 1
+        const val NewPostKey = "NEW_POST"
+        const val CreateNewPostKey = 1
     }
 }

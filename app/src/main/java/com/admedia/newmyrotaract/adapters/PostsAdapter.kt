@@ -1,41 +1,67 @@
 package com.admedia.newmyrotaract.adapters
 
-import android.app.Activity
+
 import android.content.Context
-import android.graphics.BitmapFactory
 import android.util.DisplayMetrics
 import android.view.*
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
-import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.admedia.newmyrotaract.R
 import com.admedia.newmyrotaract.databinding.PostViewBinding
 import com.admedia.newmyrotaract.dataclasses.Post
 
-class PostsAdapter(var postsList: ArrayList<Post>) : RecyclerView.Adapter<PostsAdapter.PostsViewHolder>() {
+class PostsAdapter(private var postsList: ArrayList<Post>) :
+    RecyclerView.Adapter<PostsAdapter.PostsViewHolder>() {
 
-    lateinit var binding : PostViewBinding
+    private lateinit var binding: PostViewBinding
 
-    lateinit var context : Context
+    private lateinit var context: Context
 
     private var imageWidth = 0
     private var imageHeight = 0
 
     private var setHeight = 0
-    private var setWidth = 0
 
     private var imageViewWidth = 0
 
-    lateinit var displayMetrics : DisplayMetrics
+    private lateinit var displayMetrics: DisplayMetrics
 
-    private var ratio_w = 0.0
-    private var ratio_h = 0.0
+    private var ratioW = 0.0
+    private var ratioH = 0.0
 
-    inner class PostsViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
+    interface SharePost{
+        fun onSharePostListener(post : Post, position: Int, binding: PostViewBinding)
+    }
 
+    interface LikePost{
+        fun onLikeClickListener(post: Post, position: Int, binding: PostViewBinding)
+    }
 
+    interface OpenDetailedPost{
+        fun onDetailedPostClickListener(post: Post, position: Int, binding: PostViewBinding)
+    }
+
+    var sharePost : SharePost? = null
+    var likePost : LikePost? = null
+    var detailedPost : OpenDetailedPost? = null
+
+    inner class PostsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+
+        init {
+            binding.imgLikeButton.setOnClickListener {
+                likePost?.onLikeClickListener(postsList[adapterPosition], adapterPosition, binding)
+            }
+
+            binding.imgShareButton.setOnClickListener {
+                sharePost?.onSharePostListener(postsList[adapterPosition], adapterPosition, binding)
+            }
+
+            binding.imgPostImage.setOnClickListener {
+                detailedPost?.onDetailedPostClickListener(postsList[adapterPosition], adapterPosition, binding)
+            }
+
+            binding.txtPostDescription.setOnClickListener {
+                detailedPost?.onDetailedPostClickListener(postsList[adapterPosition], adapterPosition, binding)
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostsViewHolder {
@@ -58,33 +84,33 @@ class PostsAdapter(var postsList: ArrayList<Post>) : RecyclerView.Adapter<PostsA
         binding.txtPostDescription.text = postsList[position].Description
         binding.txtPostDate.text = postsList[position].DateCrated
         binding.txtPostBy.text = postsList[position].PostBy
+        binding.txtLikes.text = postsList[position].Likes.toString()
 
         imageHeight = binding.imgPostImage.drawable.intrinsicHeight
         imageWidth = binding.imgPostImage.drawable.intrinsicWidth
 
-        SetImageViewHeightAndWidth()
+        setImageViewHeightAndWidth()
 
     }
 
     override fun getItemCount(): Int = postsList.size
 
-    private fun SetImageViewHeightAndWidth() {
+    private fun setImageViewHeightAndWidth() {
 
-        ratio_w = (imageWidth/imageViewWidth).toDouble()
-        ratio_h = (imageHeight/1720).toDouble()
+        ratioW = (imageWidth / imageViewWidth).toDouble()
+        ratioH = (imageHeight / 1720).toDouble()
 
-        if(ratio_w > ratio_h){
-            setHeight = (imageHeight/ratio_w).toInt()
+        setHeight = if (ratioW > ratioH) {
+            (imageHeight / ratioW).toInt()
+        } else {
+            (imageHeight / ratioH).toInt()
         }
-        else{
-            setHeight = (imageHeight/ratio_h).toInt()
-        }
 
-        if(setHeight <= 1720){
+        if (setHeight <= 1720) {
             binding.imgPostImage.layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT
-        }
-        else{
+        } else {
             binding.imgPostImage.layoutParams.height = 1720
         }
     }
+
 }

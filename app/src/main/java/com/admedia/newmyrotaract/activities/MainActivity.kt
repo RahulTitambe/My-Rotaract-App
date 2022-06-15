@@ -12,8 +12,8 @@ import com.admedia.newmyrotaract.fragments.PostsFragment
 
 class MainActivity : AppCompatActivity() {
 
-    var postsFragment = PostsFragment()
-    var menuBtnCreateNewPost : MenuItem? = null
+    private var postsFragment = PostsFragment()
+    private var menuBtnCreateNewPost: MenuItem? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.menuAddNewPost){
+        if (item.itemId == R.id.menuAddNewPost) {
 
             val createNewPostIntent = Intent(this, CreateNewPost::class.java)
             startActivityForResult(createNewPostIntent, Constants.CreateNewPostKey)
@@ -51,8 +51,4 @@ class MainActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-    }
 }

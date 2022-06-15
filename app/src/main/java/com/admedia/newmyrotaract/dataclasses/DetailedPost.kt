@@ -13,5 +13,6 @@ data class DetailedPost (
     var RoteriansCountForProject : String,
     var NonMembersCountForProject : String,
     var ProjectVenue : String,
-    var PostBy : String
+    var PostBy : String,
+    var Likes : Int
         )

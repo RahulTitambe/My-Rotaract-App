@@ -1,33 +1,22 @@
 package com.admedia.newmyrotaract.activities
 
-import android.app.ActionBar
 import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.graphics.drawable.ColorDrawable
-import android.net.Uri
-import android.os.Build
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.view.View
-import android.view.ViewGroup
-import android.view.WindowManager
-import android.widget.Toast
-import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.admedia.newmyrotaract.R
 import com.admedia.newmyrotaract.databinding.CreateNewPostBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import java.io.File
 
 class CreateNewPost : AppCompatActivity() {
 
-    companion object{
+    companion object {
         const val IMAGE_REQUEST_CODE = 100
     }
 
-    private lateinit var binding : CreateNewPostBinding
+    private lateinit var binding: CreateNewPostBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,7 +30,7 @@ class CreateNewPost : AppCompatActivity() {
 
     }
 
-    private fun setActionBar(){
+    private fun setActionBar() {
         supportActionBar?.title = "Create New Post"
         supportActionBar?.setBackgroundDrawable(ColorDrawable(resources.getColor(R.color.primary_pink)))
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
@@ -53,7 +42,7 @@ class CreateNewPost : AppCompatActivity() {
         return super.onSupportNavigateUp()
     }
 
-    private fun alertDialog(){
+    private fun alertDialog() {
 
         MaterialAlertDialogBuilder(this)
             .setMessage("If you discard you will loose all the edits you've made?")
@@ -76,7 +65,7 @@ class CreateNewPost : AppCompatActivity() {
         }
     }
 
-    private fun listeners(){
+    private fun listeners() {
 
         binding.imgPostImagePicker.setOnClickListener {
             val imageIntent = Intent(Intent.ACTION_PICK)
@@ -87,34 +76,36 @@ class CreateNewPost : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == IMAGE_REQUEST_CODE && resultCode== RESULT_OK) {
+        if (requestCode == IMAGE_REQUEST_CODE && resultCode == RESULT_OK) {
             binding.imgPostImagePicker.setImageURI(data?.data)
 
             val options = BitmapFactory.Options()
             options.inJustDecodeBounds = true
-            BitmapFactory.decodeStream(this.contentResolver.openInputStream(data?.data!!), null, options )
+            BitmapFactory.decodeStream(
+                this.contentResolver.openInputStream(data?.data!!),
+                null,
+                options
+            )
 
-            val imageWidth : Double = (options.outWidth).toDouble()
-            val imageHeight : Double = (options.outHeight).toDouble()
+            val imageWidth: Double = (options.outWidth).toDouble()
+            val imageHeight: Double = (options.outHeight).toDouble()
 
             var setHeight = 0
 
             val imageViewWidth = binding.imgPostImagePicker.width
 
-            val ratio_w = imageWidth/imageViewWidth
-            val ratio_h = imageHeight/1720
+            val ratioW = imageWidth / imageViewWidth
+            val ratioH = imageHeight / 1720
 
-            if(ratio_w > ratio_h){
-                setHeight = (imageHeight/ratio_w).toInt()
-            }
-            else{
-                setHeight = (imageHeight/ratio_h).toInt()
+            setHeight = if (ratioW > ratioH) {
+                (imageHeight / ratioW).toInt()
+            } else {
+                (imageHeight / ratioH).toInt()
             }
 
-            if(setHeight <= 1720){
+            if (setHeight <= 1720) {
                 binding.imgPostImagePicker.layoutParams.height = setHeight
-            }
-            else{
+            } else {
                 binding.imgPostImagePicker.layoutParams.height = 1720
             }
         }

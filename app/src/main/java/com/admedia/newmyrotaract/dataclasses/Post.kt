@@ -8,5 +8,6 @@ data class Post (
     var Description : String,
     var DateCrated : String,
     var TimeCreated : String,
-    var PostBy : String
+    var PostBy : String,
+    var Likes : Int = 0
     ) : Serializable
