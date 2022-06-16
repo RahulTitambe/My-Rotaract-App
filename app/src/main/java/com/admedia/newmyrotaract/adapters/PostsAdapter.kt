@@ -4,7 +4,10 @@ package com.admedia.newmyrotaract.adapters
 import android.content.Context
 import android.util.DisplayMetrics
 import android.view.*
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.admedia.newmyrotaract.R
 import com.admedia.newmyrotaract.databinding.PostViewBinding
 import com.admedia.newmyrotaract.dataclasses.Post
 
@@ -27,39 +30,51 @@ class PostsAdapter(private var postsList: ArrayList<Post>) :
     private var ratioW = 0.0
     private var ratioH = 0.0
 
-    interface SharePost{
-        fun onSharePostListener(post : Post, position: Int, binding: PostViewBinding)
+    interface SharePost {
+        fun onSharePostListener(post: Post, btnShare: ImageView, binding: PostViewBinding)
     }
 
-    interface LikePost{
-        fun onLikeClickListener(post: Post, position: Int, binding: PostViewBinding)
+    interface LikePost {
+        fun onLikeClickListener(post: Post, btnLike: ImageView, txtLikes: TextView)
     }
 
-    interface OpenDetailedPost{
-        fun onDetailedPostClickListener(post: Post, position: Int, binding: PostViewBinding)
+    interface OpenDetailedPost {
+        fun onDetailedPostClickListener(post: Post, position: Int)
     }
 
-    var sharePost : SharePost? = null
-    var likePost : LikePost? = null
-    var detailedPost : OpenDetailedPost? = null
+    var sharePost: SharePost? = null
+    var likePost: LikePost? = null
+    var detailedPost: OpenDetailedPost? = null
 
-    inner class PostsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+    inner class PostsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+        private var btnLike = itemView.findViewById<ImageView>(R.id.imgLikeButton)
+        private var btnShare = itemView.findViewById<ImageView>(R.id.imgShareButton)
+        private var txtLikes = itemView.findViewById<TextView>(R.id.txtLikes)
+        private var imgPostImage = itemView.findViewById<ImageView>(R.id.imgPostImage)
+        private var txtPostDescription = itemView.findViewById<TextView>(R.id.txtPostDescription)
 
         init {
-            binding.imgLikeButton.setOnClickListener {
-                likePost?.onLikeClickListener(postsList[adapterPosition], adapterPosition, binding)
+            btnLike.setOnClickListener {
+                likePost?.onLikeClickListener(postsList[adapterPosition], btnLike, txtLikes)
             }
 
-            binding.imgShareButton.setOnClickListener {
-                sharePost?.onSharePostListener(postsList[adapterPosition], adapterPosition, binding)
+            btnShare.setOnClickListener {
+                sharePost?.onSharePostListener(postsList[adapterPosition], btnShare, binding)
             }
 
-            binding.imgPostImage.setOnClickListener {
-                detailedPost?.onDetailedPostClickListener(postsList[adapterPosition], adapterPosition, binding)
+            imgPostImage.setOnClickListener {
+                detailedPost?.onDetailedPostClickListener(
+                    postsList[adapterPosition],
+                    adapterPosition
+                )
             }
 
-            binding.txtPostDescription.setOnClickListener {
-                detailedPost?.onDetailedPostClickListener(postsList[adapterPosition], adapterPosition, binding)
+            txtPostDescription.setOnClickListener {
+                detailedPost?.onDetailedPostClickListener(
+                    postsList[adapterPosition],
+                    adapterPosition
+                )
             }
         }
     }

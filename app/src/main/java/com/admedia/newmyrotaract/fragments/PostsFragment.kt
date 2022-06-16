@@ -11,6 +11,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
+import androidx.core.graphics.drawable.toDrawable
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.admedia.newmyrotaract.R
@@ -32,8 +34,6 @@ class PostsFragment : Fragment() {
     private var postsAdapter = PostsAdapter(postsList)
 
     private var newPost: Bundle? = null
-
-    var like = false
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -75,7 +75,8 @@ class PostsFragment : Fragment() {
                 "25 Apr",
                 "5:32",
                 "Professional Service Avenue",
-                5
+                5,
+                false
             )
         )
         postsList.add(
@@ -88,7 +89,8 @@ class PostsFragment : Fragment() {
                 "15 May",
                 "5:32",
                 "Professional Service Avenue",
-                0
+                0,
+                false
             )
         )
         postsList.add(
@@ -101,7 +103,8 @@ class PostsFragment : Fragment() {
                 "08 Aug",
                 "5:32",
                 "Professional Service Avenue",
-                6
+                6,
+                false
             )
         )
     }
@@ -117,7 +120,11 @@ class PostsFragment : Fragment() {
     }
 
     inner class MyOnPostClickListener : PostsAdapter.SharePost {
-        override fun onSharePostListener(post: Post, position: Int, binding: PostViewBinding) {
+        override fun onSharePostListener(
+            post: Post,
+            btnShare: ImageView,
+            binding: PostViewBinding
+        ) {
 
             val drawable = binding.imgPostImage.drawable as BitmapDrawable
             val bitmap: Bitmap = drawable.bitmap
@@ -141,18 +148,18 @@ class PostsFragment : Fragment() {
     }
 
     inner class MyLikeClickListener : PostsAdapter.LikePost {
-        override fun onLikeClickListener(post: Post, position: Int, binding: PostViewBinding) {
+        override fun onLikeClickListener(post: Post, btnLike: ImageView, txtLikes: TextView) {
 
-            if (like) {
-                post.Likes = post.Likes - 1
-                binding.txtLikes.text = post.Likes.toString()
-                binding.imgLikeButton.setImageResource(R.drawable.ic_heart_outline)
-                like = false
-            } else {
+            if (!post.LikeStatus) {
                 post.Likes = post.Likes + 1
-                binding.txtLikes.text = post.Likes.toString()
-                binding.imgLikeButton.setImageResource(R.drawable.ic_pink_heart)
-                like = true
+                txtLikes.text = post.Likes.toString()
+                btnLike.setImageResource(R.drawable.ic_pink_heart)
+                post.LikeStatus = true
+            } else {
+                post.Likes = post.Likes - 1
+                txtLikes.text = post.Likes.toString()
+                btnLike.setImageResource(R.drawable.ic_heart_outline)
+                post.LikeStatus = false
             }
         }
     }
@@ -161,7 +168,6 @@ class PostsFragment : Fragment() {
         override fun onDetailedPostClickListener(
             post: Post,
             position: Int,
-            binding: PostViewBinding
         ) {
 
             val bundle = Bundle()
@@ -188,5 +194,4 @@ class PostsFragment : Fragment() {
                 ?.commit()
         }
     }
-
 }
