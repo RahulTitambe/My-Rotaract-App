@@ -12,7 +12,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.graphics.drawable.toDrawable
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.admedia.newmyrotaract.R
@@ -122,11 +121,11 @@ class PostsFragment : Fragment() {
     inner class MyOnPostClickListener : PostsAdapter.SharePost {
         override fun onSharePostListener(
             post: Post,
-            btnShare: ImageView,
+            postImage: ImageView,
             binding: PostViewBinding
         ) {
 
-            val drawable = binding.imgPostImage.drawable as BitmapDrawable
+            val drawable = postImage.drawable as BitmapDrawable
             val bitmap: Bitmap = drawable.bitmap
 
             val bitmapPath: String =

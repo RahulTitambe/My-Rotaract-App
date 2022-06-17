@@ -31,7 +31,7 @@ class PostsAdapter(private var postsList: ArrayList<Post>) :
     private var ratioH = 0.0
 
     interface SharePost {
-        fun onSharePostListener(post: Post, btnShare: ImageView, binding: PostViewBinding)
+        fun onSharePostListener(post: Post, postImage: ImageView, binding: PostViewBinding)
     }
 
     interface LikePost {
@@ -60,7 +60,7 @@ class PostsAdapter(private var postsList: ArrayList<Post>) :
             }
 
             btnShare.setOnClickListener {
-                sharePost?.onSharePostListener(postsList[adapterPosition], btnShare, binding)
+                sharePost?.onSharePostListener(postsList[adapterPosition], imgPostImage, binding)
             }
 
             imgPostImage.setOnClickListener {
